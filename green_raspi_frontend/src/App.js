@@ -4,6 +4,7 @@ import Homescreen from "./Homescreen.js";
 import "./App.css";
 import { useState, useEffect } from "react";
 import useInterval from "./useInterval";
+import axios from "axios";
 
 function App() {
   const [vals, setVals] = useState({
@@ -13,57 +14,28 @@ function App() {
     ph: 0,
   });
 
-  const get_init_vals = () => {
+  const fetchVals = async () => {
     // api call to pi for values and then set
     // initial values to be passed down
-    let t_pressure = 70;
-    let t_humidity = 70;
-    let humidity = 50;
-    let ph = 7;
-
-    setVals({
-      t_pressure,
-      t_humidity,
-      humidity,
-      ph,
-    });
-  };
-
-  const get_updated_vals = async () => {
-    // dummy code - api call
-    let t_pressure = vals.t_pressure + 10;
-    let t_humidity = vals.t_humidity + 10;
-    let humidity = vals.humidity + 10;
-    let ph = vals.ph + 10;
-    return {
-      t_pressure,
-      t_humidity,
-      humidity,
-      ph,
-    };
-  };
-
-  useEffect(() => {
-    get_init_vals();
-  }, []);
-
-  const fetchVals = async () => {
-    // api call
     try {
-      let res = await get_updated_vals();
-
-      // set vals to new vals
+      let res = await axios.get("http://192.168.1.20:5000/");
       setVals({
-        t_pressure: res.t_pressure,
-        t_humidity: res.t_humidity,
-        humidity: res.humidity,
-        ph: res.ph,
+        t_pressure: res.data.t_pressure,
+        t_humidity: res.data.t_humidity,
+        humidity: res.data.humidity,
+        ph: 5.5,
       });
     } catch (err) {
       console.error(err);
-      return;
     }
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      fetchVals();
+    }
+    fetchData();
+  }, []);
 
   useInterval(fetchVals, 60000);
 
