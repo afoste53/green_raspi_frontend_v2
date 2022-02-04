@@ -1,0 +1,9 @@
+react app hits api to microservice for getting data
+
+get data handler takes few args:
+-timeset (optional): time range you want data from | default will be last 24 hrs
+
+data fetch server will serve requests from db
+
+data writer server will run and write to db regularly
+
