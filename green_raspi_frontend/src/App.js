@@ -5,6 +5,7 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import useInterval from "./useInterval";
 import axios from "axios";
+import { destination } from "./secrets/secrets.js";
 
 function App() {
   const [vals, setVals] = useState({
@@ -18,7 +19,7 @@ function App() {
     // api call to pi for values and then set
     // initial values to be passed down
     try {
-      let res = await axios.get("http://192.168.1.20:5000/");
+      let res = await axios.get(destination));
       setVals({
         t_pressure: res.data.t_pressure,
         t_humidity: res.data.t_humidity,
