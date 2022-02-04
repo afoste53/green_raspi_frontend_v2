@@ -19,7 +19,7 @@ function App() {
     // api call to pi for values and then set
     // initial values to be passed down
     try {
-      let res = await axios.get(destination));
+      let res = await axios.get(destination);
       setVals({
         t_pressure: res.data.t_pressure,
         t_humidity: res.data.t_humidity,
