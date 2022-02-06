@@ -11,7 +11,7 @@ export const ValueScreen = ({
         <h1>Current Values</h1>
         <div>
           <p>
-            <strong>Temp (Pressure)</strong>: {t_pressure}
+            <strong>Temp (Pressure)</strong>: {t_pressure[9]}
           </p>
           <p>
             <strong>Temp (Humidity)</strong>: {t_humidity}
@@ -25,7 +25,7 @@ export const ValueScreen = ({
         </div>
       </Container>
       <Container className="app-container">
-        <GraphComponent x={2} y={2} />
+        <GraphComponent x={"time"} y={"hello"} />
       </Container>
     </Container>
   );

@@ -22,23 +22,21 @@ ChartJS.register(
   Legend
 );
 
-export const GraphComponent = ({ x, y, scale = 1 }) => {
+export const GraphComponent = ({ x, y }) => {
+  const { x_label, x_vals } = x;
+  const { y_label, y_vals } = y;
+
   return (
     <div className="graph-container">
       <Line
         datasetIdKey="id"
         data={{
-          labels: ["Jun", "Jul", "Aug"],
+          labels: x_vals,
           datasets: [
             {
               id: 1,
               label: "",
-              data: [5, 6, 7],
-            },
-            {
-              id: 2,
-              label: "",
-              data: [3, 2, 1],
+              data: y_vals,
             },
           ],
         }}
