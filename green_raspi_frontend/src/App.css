@@ -12,7 +12,14 @@ Body {
 }
 
 .graph-container {
-  min-width: 200px;
-  min-height: 200px;
-  border: 1px solid blue;
+  min-width: 100px;
+  min-height: 100px;
+  margin: 5px
+}
+
+.graphs-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }

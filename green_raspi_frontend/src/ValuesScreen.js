@@ -1,31 +1,33 @@
 /** @format */
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { GraphComponent } from "./GraphComponent";
 
-export const ValueScreen = ({
-  vals: { t_pressure, t_humidity, humidity, ph },
-}) => {
+export const ValueScreen = ({ vals }) => {
+  const { t_pressure, t_humidity, humidity, ph } = vals;
+
+  useEffect(() => {}, [t_pressure]);
+
   return (
     <Container className="d-flex flex-column" id="outer-container">
       <Container className="app-container">
         <h1>Current Values</h1>
         <div>
           <p>
-            <strong>Temp (Pressure)</strong>: {t_pressure[9]}
+            <strong>Temp (Pressure)</strong>:{" "}
+            {t_pressure[0] && JSON.stringify(t_pressure[6].val)}
           </p>
           <p>
-            <strong>Temp (Humidity)</strong>: {t_humidity}
+            <strong>Temp (Humidity)</strong>:{" "}
+            {t_humidity[0] && JSON.stringify(t_humidity[6].val)}
           </p>
           <p>
-            <strong>Humidity</strong>: {humidity}
+            <strong>Humidity</strong>:{" "}
+            {humidity[0] && JSON.stringify(humidity[6].val)}
           </p>
           <p>
-            <strong>Ph</strong>: {ph}
+            <strong>Ph</strong>: {ph[0] && JSON.stringify(ph[6].val)}
           </p>
         </div>
-      </Container>
-      <Container className="app-container">
-        <GraphComponent x={"time"} y={"hello"} />
       </Container>
     </Container>
   );

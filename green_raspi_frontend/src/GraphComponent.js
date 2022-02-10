@@ -1,4 +1,5 @@
 /** @format */
+import { Container } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -11,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Chart } from "react-chartjs-2";
+import { useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -22,25 +24,35 @@ ChartJS.register(
   Legend
 );
 
-export const GraphComponent = ({ x, y }) => {
-  const { x_label, x_vals } = x;
-  const { y_label, y_vals } = y;
+export const GraphComponent = ({ data_points, x_label, y_label, title }) => {
+  useEffect(() => {
+    console.log({ data_points, x_label, y_label });
+  }, [data_points]);
+
+  const data = {
+    labels: data_points.map((v) => v.date),
+    datasets: [
+      {
+        label: y_label,
+        data: data_points.map((v) => v.val),
+      },
+    ],
+  };
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: title,
+      },
+    },
+  };
 
   return (
-    <div className="graph-container">
-      <Line
-        datasetIdKey="id"
-        data={{
-          labels: x_vals,
-          datasets: [
-            {
-              id: 1,
-              label: "",
-              data: y_vals,
-            },
-          ],
-        }}
-      />
-    </div>
+    <Container>
+      <div className="graph-container">
+        <Line datasetIdKey="id" data={data} options={options} />
+      </div>
+    </Container>
   );
 };
