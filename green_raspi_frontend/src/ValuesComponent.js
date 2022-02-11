@@ -2,10 +2,8 @@
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
-export const ValueScreen = ({ vals }) => {
+export const ValuesComponent = ({ vals }) => {
   const { t_pressure, t_humidity, humidity, ph } = vals;
-
-  useEffect(() => {}, [t_pressure]);
 
   return (
     <Container className="d-flex flex-column" id="outer-container">
@@ -14,15 +12,19 @@ export const ValueScreen = ({ vals }) => {
         <div>
           <p>
             <strong>Temp (Pressure)</strong>:{" "}
-            {t_pressure[0] && JSON.stringify(t_pressure[6].val)}
+            {t_pressure &&
+              t_pressure?.at(-1) &&
+              JSON.stringify(t_pressure.at(-1)[1])}
           </p>
           <p>
             <strong>Temp (Humidity)</strong>:{" "}
-            {t_humidity[0] && JSON.stringify(t_humidity[6].val)}
+            {t_humidity &&
+              t_humidity?.at(-1) &&
+              JSON.stringify(t_humidity.at(-1)[1])}
           </p>
           <p>
             <strong>Humidity</strong>:{" "}
-            {humidity[0] && JSON.stringify(humidity[6].val)}
+            {humidity && humidity?.at(-1) && JSON.stringify(humidity.at(-1)[1])}
           </p>
           <p>
             <strong>Ph</strong>: {ph[0] && JSON.stringify(ph[6].val)}

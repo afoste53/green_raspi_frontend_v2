@@ -24,17 +24,23 @@ ChartJS.register(
   Legend
 );
 
-export const GraphComponent = ({ data_points, x_label, y_label, title }) => {
+export const GraphComponent = ({
+  data_points,
+  x_label,
+  y_label,
+  title,
+  min,
+}) => {
   useEffect(() => {
     console.log({ data_points, x_label, y_label });
   }, [data_points]);
 
   const data = {
-    labels: data_points.map((v) => v.date),
+    labels: data_points.map((v) => v[0]),
     datasets: [
       {
         label: y_label,
-        data: data_points.map((v) => v.val),
+        data: data_points.map((v) => v[1]),
       },
     ],
   };
@@ -45,6 +51,9 @@ export const GraphComponent = ({ data_points, x_label, y_label, title }) => {
         display: true,
         text: title,
       },
+    },
+    scales: {
+      y: { min },
     },
   };
 
