@@ -1,4 +1,5 @@
 /** @format */
+import "./App.css";
 import { Container } from "react-bootstrap";
 import { Line } from "react-chartjs-2";
 import {
@@ -35,6 +36,8 @@ export const GraphComponent = ({
       {
         label: y_label,
         data: data_points.map((v) => v[1]),
+        borderColor: "rgb(255, 99, 132)",
+        backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
     ],
   };
@@ -43,6 +46,8 @@ export const GraphComponent = ({
     data.datasets.push({
       label: second_data_set.label,
       data: second_data_set.data,
+      borderColor: "rgb(53, 162, 235)",
+      backgroundColor: "rgba(53, 162, 235, 0.5)",
     });
 
   const options = {

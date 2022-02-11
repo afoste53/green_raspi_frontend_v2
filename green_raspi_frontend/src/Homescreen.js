@@ -3,6 +3,7 @@
 import { Container } from "react-bootstrap";
 import { GraphComponent } from "./GraphComponent.js";
 import { ValuesComponent } from "./ValuesComponent.js";
+import "./App.css";
 
 const Homescreen = ({ vals }) => {
   return (
@@ -11,12 +12,12 @@ const Homescreen = ({ vals }) => {
       <Container className="graphs-container">
         <GraphComponent
           data_points={vals.t_pressure}
-          y_label={"Temp-Pressure (Degrees C)"}
+          y_label={"Temp-Pressure"}
           second_data_set={{
-            label: "Temp-Humidity (Degrees C)",
+            label: "Temp-Humidity",
             data: vals.t_humidity.map((v) => v[1]),
           }}
-          title={"Temp Over Time"}
+          title={"Temp Over Time (Deg C)"}
           min={20}
         />
         <GraphComponent
@@ -25,16 +26,9 @@ const Homescreen = ({ vals }) => {
           title={"Relative Humidity Over Time"}
           min={20}
         />
-        {/* <GraphComponent
-          data_points={vals.ph}
-          x_label={"time"}
-          y_label={"Ph"}
-          title={"Ph Over Time"}
-        /> */}
       </Container>
-      <div>
-        <br></br>
-      </div>
+      <br></br>
+      <br></br>
     </Container>
   );
 };

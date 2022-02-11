@@ -1,9 +1,9 @@
 Body {
-  /* background-color: black !important;  */
   color: orange !important;
+
 }
 
-.app-container {
+.values-container {
   margin: 25px;
 }
 
@@ -12,9 +12,9 @@ Body {
 }
 
 .graph-container {
-  min-width: 100px;
-  min-height: 100px;
-  margin: 5px
+  min-width: 200px;
+  min-height: 200px;
+  margin-bottom: 40px;
 }
 
 .graphs-container {
@@ -22,4 +22,5 @@ Body {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  margin: 25px, auto, 25px;
 }

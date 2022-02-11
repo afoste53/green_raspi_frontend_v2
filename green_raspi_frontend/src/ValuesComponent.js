@@ -1,5 +1,4 @@
 /** @format */
-import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 
 export const ValuesComponent = ({ vals }) => {
@@ -7,7 +6,7 @@ export const ValuesComponent = ({ vals }) => {
 
   return (
     <Container className="d-flex flex-column" id="outer-container">
-      <Container className="app-container">
+      <Container className="values-container">
         <h1>Current Values</h1>
         <div>
           <p>
