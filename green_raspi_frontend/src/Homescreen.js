@@ -11,21 +11,18 @@ const Homescreen = ({ vals }) => {
       <Container className="graphs-container">
         <GraphComponent
           data_points={vals.t_pressure}
-          x_label={"time"}
           y_label={"Temp (Degrees C)"}
           title={"Temp (p*C) Over Time"}
           min={20}
         />
         <GraphComponent
           data_points={vals.t_humidity}
-          x_label={"time"}
           y_label={"Temp (Degrees C)"}
           title={"Temp (h*C) Over Time"}
           min={20}
         />
         <GraphComponent
           data_points={vals.humidity}
-          x_label={"time"}
           y_label={"RH"}
           title={"Relative Humidity Over Time"}
           min={20}

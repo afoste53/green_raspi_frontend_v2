@@ -11,8 +11,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { Chart } from "react-chartjs-2";
-import { useEffect } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -24,19 +22,9 @@ ChartJS.register(
   Legend
 );
 
-export const GraphComponent = ({
-  data_points,
-  x_label,
-  y_label,
-  title,
-  min,
-}) => {
-  useEffect(() => {
-    console.log({ data_points, x_label, y_label });
-  }, [data_points]);
-
+export const GraphComponent = ({ data_points, y_label, title, min }) => {
   const data = {
-    labels: data_points.map((v) => v[0]),
+    labels: data_points.map((v) => v[0].substr(10, 6)),
     datasets: [
       {
         label: y_label,
