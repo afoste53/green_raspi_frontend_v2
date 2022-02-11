@@ -22,7 +22,13 @@ ChartJS.register(
   Legend
 );
 
-export const GraphComponent = ({ data_points, y_label, title, min }) => {
+export const GraphComponent = ({
+  data_points,
+  y_label,
+  title,
+  min,
+  second_data_set,
+}) => {
   const data = {
     labels: data_points.map((v) => v[0].substr(10, 6)),
     datasets: [
@@ -32,6 +38,13 @@ export const GraphComponent = ({ data_points, y_label, title, min }) => {
       },
     ],
   };
+
+  second_data_set &&
+    data.datasets.push({
+      label: second_data_set.label,
+      data: second_data_set.data,
+    });
+
   const options = {
     responsive: true,
     plugins: {
