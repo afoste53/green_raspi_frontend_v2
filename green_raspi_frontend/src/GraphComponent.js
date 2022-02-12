@@ -12,6 +12,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { useEffect, useState } from "react";
 
 ChartJS.register(
   CategoryScale,
@@ -29,13 +30,31 @@ export const GraphComponent = ({
   title,
   min,
   second_data_set,
+  timeFrame,
 }) => {
+  const handleTimeFrame = (dataArr) => {
+    switch (timeFrame) {
+      case "Last Hour":
+        return dataArr.slice(-7, -1);
+      case "Last 4 Hours":
+        return dataArr.slice(-25, -1);
+      case "Today":
+        return dataArr.slice(-145, -1);
+      case "Last 7 Days":
+        return dataArr.slice(-1009, -1);
+      case "Last 30 Days":
+        return dataArr.slice(-4320, -1);
+      default:
+        return dataArr;
+    }
+  };
+
   const data = {
-    labels: data_points.map((v) => v[0].substr(10, 6)),
+    labels: handleTimeFrame(data_points.map((v) => v[0].substr(10, 6))),
     datasets: [
       {
         label: y_label,
-        data: data_points.map((v) => v[1]),
+        data: handleTimeFrame(data_points.map((v) => v[1])),
         borderColor: "rgb(255, 99, 132)",
         backgroundColor: "rgba(255, 99, 132, 0.5)",
       },
@@ -45,7 +64,7 @@ export const GraphComponent = ({
   second_data_set &&
     data.datasets.push({
       label: second_data_set.label,
-      data: second_data_set.data,
+      data: handleTimeFrame(second_data_set.data),
       borderColor: "rgb(53, 162, 235)",
       backgroundColor: "rgba(53, 162, 235, 0.5)",
     });

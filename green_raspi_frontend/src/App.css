@@ -1,6 +1,9 @@
 Body {
   color: orange !important;
+}
 
+#homescreen {
+  margin-top: 100px !important;
 }
 
 .values-container {
