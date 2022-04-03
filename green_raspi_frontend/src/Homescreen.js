@@ -50,7 +50,7 @@ const Homescreen = ({ vals }) => {
               data: vals.t_humidity.map((v) => v[1]),
             }}
             title={"Temp Over Time (Deg C)"}
-            min={20}
+            min={10}
             timeFrame={formSelectVal}
             key={`k1-${formSelectVal}-${vals}`}
           />

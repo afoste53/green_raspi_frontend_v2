@@ -13,7 +13,6 @@ function App() {
     t_humidity: [],
     humidity: [],
     ph: [],
-    loading: true,
   });
 
   const fetchVals = async () => {
@@ -30,11 +29,17 @@ function App() {
         t_humidity: res.data.t_humidity,
         humidity: res.data.humidity,
         ph: 5.5,
+        error: null,
+        loading: false,
       });
       console.log(res);
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleError = (error) => {
+    setVals({ error });
   };
 
   useEffect(() => {
