@@ -13,6 +13,7 @@ function App() {
     t_humidity: [],
     humidity: [],
     ph: [],
+    loading: true,
   });
 
   const fetchVals = async () => {
