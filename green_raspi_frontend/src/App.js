@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import useInterval from "./useInterval";
 import axios from "axios";
 import { destination } from "./secrets/secrets.js";
+import Loading from "./Loading";
 
 function App() {
   const [vals, setVals] = useState({
@@ -13,6 +14,7 @@ function App() {
     t_humidity: [],
     humidity: [],
     ph: [],
+    loading: true,
   });
 
   const fetchVals = async () => {
@@ -29,17 +31,18 @@ function App() {
         t_humidity: res.data.t_humidity,
         humidity: res.data.humidity,
         ph: 5.5,
-        error: null,
         loading: false,
+        error: null,
       });
       console.log(res);
     } catch (err) {
-      console.error(err);
+      handleError(err);
     }
   };
 
   const handleError = (error) => {
-    setVals({ error });
+    console.error(EvalError);
+    setVals({ ...vals, error, loading: false });
   };
 
   useEffect(() => {
@@ -50,6 +53,10 @@ function App() {
   }, []);
 
   useInterval(fetchVals, 60000);
+
+  if (vals.error) return <h1>{vals.error}</h1>;
+
+  if (vals.loading) return <Loading />;
 
   return <Homescreen id="homescreen" vals={vals} />;
 }
