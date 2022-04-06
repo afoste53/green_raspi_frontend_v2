@@ -15,6 +15,7 @@ function App() {
     humidity: [],
     ph: [],
     loading: true,
+    error: null
   });
 
   const fetchVals = async () => {
