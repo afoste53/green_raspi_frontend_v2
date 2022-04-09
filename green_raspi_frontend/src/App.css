@@ -1,0 +1,35 @@
+Body {
+  color: orange !important;
+}
+
+#homescreen {
+  margin-top: 100px !important;
+}
+
+.values-container {
+  margin: 25px;
+}
+
+.table-text {
+  color: orange;
+}
+
+.graph-container {
+  min-width: 200px;
+  min-height: 200px;
+  margin-bottom: 40px;
+}
+
+.graphs-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin: 25px, auto, 25px;
+}
+
+.loading-container{
+  display: flex;
+  flex-direction: row;
+  margin-top: 40vh;
+}
